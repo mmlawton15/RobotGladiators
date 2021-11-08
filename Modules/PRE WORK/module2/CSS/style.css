@@ -1,0 +1,38 @@
+.center {
+    text-align: center;
+}
+.red {
+    color: red;
+}
+.blue {
+    color: blue;
+}
+.green {
+    color: green;
+}
+.orange {
+    color: orange;
+}
+.large {
+    font-size: 40px;
+}
+.small {
+    font-size: 10px;
+}
+.tahoma {
+    font-family: Tahoma;
+}
+.orange {
+    color: orange;
+}
+.bold {
+    font-weight: bold;
+}
+.styledFont {
+    font-family: cursive;
+}
+.imageborder {
+    border-style: outset;
+    border-width: 3px;
+    border-color: plum;
+}
