@@ -35,9 +35,9 @@ var fight = function(enemy) {
       if (fightOrSkip()){
         break;
       }
-      var damage = randomNumber(playerInfo.Attack - 3, playerInfo.attack);
+    var damage = randomNumber(playerInfo.Attack - 3, playerInfo.attack);
 
-    enemy.health = Math.max(0, enemy.health - damage);
+    enemy.health = Math.max(50, enemy.health - damage);
 
     console.log(
       playerInfo.name + " attacked " + enemy.name + ". " + enemy.name + " now has " + enemy.health + " health remaining.");
@@ -106,14 +106,30 @@ var startGame = function() {
 
 // function to end the entire game
 var endGame = function() {
-  // if player is still alive, player wins!
-  if (playerInfo.health > 0) {
-    window.alert("Great job, you've survived the game! You now have a score of " + playerInfo.money + ".");
-  } 
-  else {
-    window.alert("You've lost your robot in battle.");
-  }
+ window.alert("The game has now ended. Let's see how you did!");
+ var highScore = localStorage.getItem("highschore");
+ if (highScore === null) {
+   highScore = 0;
+ }
+ if (playerInfo.money > highScore) {
+   localStorage.setItem("highscore", playerInfo.money);
+   localStorage.setItem("name", playerInfo.name);
+
+   alert(playerInfo.name + " now has the high score of " + playerInfo.money + "!");
+ }
+else {
+  alert(playerInfo.name + "did not beat the high score of " + highScore + ". Maybe next time!");
+}
+
+
+  //if (playerInfo.health > 0) {
+  //  window.alert("Great job, you've survived the game! You now have a score of " + playerInfo.money + ".");
+  //} 
+  //else {
+  //  window.alert("You've lost your robot in battle.");
+  //}
   // ask player if they'd like to play again
+
   var playAgainConfirm = window.confirm("Would you like to play again?");
 
   if (playAgainConfirm) {
@@ -208,6 +224,6 @@ console.log(enemyInfo[0]);
 console.log(enemyInfo[0].name);
 console.log(enemyInfo[0]['attack']);
 
-// console.log(playerInfo.name, playerInfo.attack, playerInfo.health);
+console.log(playerInfo.name, playerInfo.attack, playerInfo.health);
 
 startGame();
