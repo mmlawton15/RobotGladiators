@@ -1,9 +1,7 @@
-
 var randomNumber = function(min, max) {
   var value = Math.floor(Math.random() * (max - min + 1) + min);
   return value;
 };
-
 
 var fightOrSkip = function() {
   var promptFight = window.prompt('Would you like to fight or skip this battle? Enter FIGHT or SKIP to choose.');
@@ -23,7 +21,6 @@ var fightOrSkip = function() {
   return false;
 };
 
-
 var fight = function(enemy) { 
   var isPlayerTurn = true;
   if (Math.random() > 0.5) {
@@ -35,12 +32,9 @@ var fight = function(enemy) {
         break;
       }
       var damage = randomNumber(playerInfo.Attack - 3, playerInfo.attack);
-
       enemy.health = Math.max(0, enemy.health - damage);
-
       console.log(
         playerInfo.name + " attacked " + enemy.name + ". " + enemy.name + " now has " + enemy.health + " health remaining.");
-
       if (enemy.health <= 0) {
         window.alert(enemy.name + " has died!");
         playerInfo.money = playerInfo.money + 20;
@@ -68,7 +62,6 @@ var fight = function(enemy) {
   isPlayerTurn = !isPlayerTurn;
   }
 };
-
 
 //function to start a new game
 var startGame = function() {
@@ -101,7 +94,6 @@ var startGame = function() {
   endGame();
 }
 
-
 // function to end the entire game
 var endGame = function() {
  window.alert("The game has now ended. Let's see how you did!");
@@ -128,7 +120,6 @@ var endGame = function() {
     window.alert("Thank you for playing Robot Gladiators! Come back soon!");
   }
 }
-
 
 var shop = function() {
   var shopOptionPrompt = window.prompt("Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter 1 for REFILL, 2 for UPGRADE, or 3 for LEAVE to make a choice.");
@@ -158,7 +149,6 @@ var getPlayerName = function() {
   console.log("Your robot's name is " + name);
   return name;
 }
-
 
 var playerInfo = {
   name: getPlayerName(),
@@ -206,13 +196,4 @@ var enemyInfo = [
     attack: randomNumber(10, 14)
   }
 ];
-
-
-//console.log(enemyInfo);
-//console.log(enemyInfo[0]);
-//console.log(enemyInfo[0].name);
-//console.log(enemyInfo[0]['attack']);
-
-//console.log(playerInfo.name, playerInfo.attack, playerInfo.health);
-
 startGame();
